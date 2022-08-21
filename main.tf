@@ -23,3 +23,9 @@ resource "heroku_app" "true_budget" {
   config_vars      = {}
   internal_routing = false
 }
+
+resource "heroku_addon" "database" {
+  app_id = heroku_app.true_budget.id
+  plan = "heroku-postgresql:hobby-dev"
+  name = var.database_name
+}
