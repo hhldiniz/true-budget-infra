@@ -7,6 +7,14 @@ terraform {
   }
 }
 
+cloud {
+    organization = "hugodiniz"
+
+    workspaces {
+      name = "true-budget-infra"
+    }
+  }
+
 provider "heroku" {
   email = var.heroku_username
   api_key = var.heroku_api_key
