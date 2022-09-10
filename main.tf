@@ -1,38 +1,31 @@
-terraform {
-  required_providers {
-    heroku = {
-      source  = "heroku/heroku"
-      version = "~> 5.0"
-    }
-  }
-  cloud {
-    organization = "hugodiniz"
-
-    workspaces {
-      name = "true-budget-infra"
-    }
-  }
+locals {
+  resource_group_name = azurerm_resource_group.rg.name
 }
 
-provider "heroku" {
-  email   = var.heroku_username
-  api_key = var.heroku_api_key
+resource "random_pet" "rg_name" {
+  prefix = var.resource_group_name_prefix
 }
 
-resource "heroku_app" "true_budget" {
-  name       = var.app_name
-  buildpacks = ["heroku/ruby"]
-  region     = "us"
-  stack      = "heroku-22"
-  sensitive_config_vars = {
-    "DEVISE_JWT_SECRET_KEY" = var.devise_jwt_secret_key
+resource "azurerm_resource_group" "rg" {
+  name     = random_pet.rg_name.id
+  location = var.resource_group_location
+}
+
+resource "azurerm_service_plan" "european_exchange_api_service_plan" {
+  name                = var.app_name
+  resource_group_name = local.resource_group_name
+  location            = var.resource_group_location
+  os_type             = "Linux"
+  sku_name            = "F1"
+}
+
+resource "azurerm_linux_web_app" "european_exchange_api_web_app" {
+  name                = var.app_name
+  resource_group_name = local.resource_group_name
+  location            = var.resource_group_location
+  service_plan_id     = azurerm_service_plan.european_exchange_api_service_plan.id
+
+  site_config {
+    always_on = false
   }
-  config_vars      = {}
-  internal_routing = false
-}
-
-resource "heroku_addon" "database" {
-  app_id = heroku_app.true_budget.id
-  plan   = "heroku-postgresql:hobby-dev"
-  name   = var.database_name
 }
