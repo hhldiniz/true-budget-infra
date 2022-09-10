@@ -5,7 +5,7 @@ terraform {
       version = "~>3.0"
     }
     heroku = {
-      source = "heroku/heroku"
+      source  = "heroku/heroku"
       version = "~>5.0"
     }
   }

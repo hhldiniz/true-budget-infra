@@ -26,6 +26,6 @@ resource "azurerm_linux_web_app" "european_exchange_api_web_app" {
   service_plan_id     = azurerm_service_plan.european_exchange_api_service_plan.id
 
   site_config {
-    always_on         = false
+    always_on = false
   }
 }

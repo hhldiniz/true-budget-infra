@@ -14,41 +14,41 @@ variable "app_name" {
 }
 
 variable "database_name" {
-  type = string
+  type    = string
   default = "true-budget-db"
 }
 
 variable "devise_jwt_secret_key" {
-  type = string
+  type      = string
   sensitive = true
 }
 
 variable "subscription_id" {
-  type = string
+  type      = string
   sensitive = true
 }
 
 variable "client_id" {
-  type = string
+  type      = string
   sensitive = true
 }
 
 variable "client_secret" {
-  type = string
+  type      = string
   sensitive = true
 }
 
 variable "tenant_id" {
-  type = string
+  type      = string
   sensitive = true
 }
 
 variable "heroku_api_key" {
-  type = string
+  type      = string
   sensitive = true
 }
 
 variable "heroku_username" {
-  type = string
+  type      = string
   sensitive = true
 }
