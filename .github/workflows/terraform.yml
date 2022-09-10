@@ -2,6 +2,7 @@ name: 'Terraform'
 
 on:
   push:
+  pull_requests:
     branches:
     - "main"
     
