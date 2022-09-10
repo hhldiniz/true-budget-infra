@@ -14,6 +14,11 @@ terraform {
   }
 }
 
+provider "heroku" {
+  email   = var.heroku_username
+  api_key = var.heroku_api_key
+}
+
 provider "azurerm" {
   features {}
   subscription_id = var.subscription_id
