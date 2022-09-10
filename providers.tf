@@ -4,6 +4,10 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~>3.0"
     }
+    heroku = {
+      source = "heroku/heroku"
+      version = "~>5.0"
+    }
   }
   cloud {
     organization = "hugodiniz"
