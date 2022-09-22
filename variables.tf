@@ -42,13 +42,3 @@ variable "tenant_id" {
   type      = string
   sensitive = true
 }
-
-variable "heroku_api_key" {
-  type      = string
-  sensitive = true
-}
-
-variable "heroku_username" {
-  type      = string
-  sensitive = true
-}
