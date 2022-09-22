@@ -4,10 +4,6 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~>3.0"
     }
-    heroku = {
-      source  = "heroku/heroku"
-      version = "~>5.0"
-    }
   }
   cloud {
     organization = "hugodiniz"
@@ -16,11 +12,6 @@ terraform {
       name = "true-budget-infra"
     }
   }
-}
-
-provider "heroku" {
-  email   = var.heroku_username
-  api_key = var.heroku_api_key
 }
 
 provider "azurerm" {
