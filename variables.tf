@@ -18,6 +18,16 @@ variable "database_name" {
   default = "true-budget-db"
 }
 
+variable "database_admin_user" {
+  type = string
+  sensitive = true
+}
+
+variable "database_admin_password" {
+  type = string
+  sensitive = true
+}
+
 variable "devise_jwt_secret_key" {
   type      = string
   sensitive = true
